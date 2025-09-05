@@ -260,8 +260,11 @@
 <!--                    </button>-->
 <!--                </div>-->
 <!--            </form>-->
-            <!-- UPDATED FORM - Replace with your actual Formspree form ID -->
-            <form id="registration-form" action="https://formspree.io/f/xeolpdpz" method="POST" class="bg-white rounded-2xl card-shadow p-4 sm:p-8 space-y-6 sm:space-y-8">
+<!--            &lt;!&ndash; UPDATED FORM - Replace with your actual Formspree form ID &ndash;&gt;-->
+<!--            <form id="registration-form" action="https://formspree.io/f/xeolpdpz" method="POST" class="bg-white rounded-2xl card-shadow p-4 sm:p-8 space-y-6 sm:space-y-8">-->
+<!--                &lt;!&ndash; Add hidden field for better organization &ndash;&gt;-->
+<!--                <input type="hidden" name="_subject" value="New JnU IUPC 2025 Team Registration">-->
+            <form id="registration-form" action="https://script.google.com/macros/s/AKfycbx7C-FIqhs41GZKeyS8f0HNnyCeTOJYx7xxRSr_YF0wHxQIuiv5z4SzJxO-V3iscT5r5A/exec" method="POST" class="bg-white rounded-2xl card-shadow p-4 sm:p-8 space-y-6 sm:space-y-8">
                 <!-- Add hidden field for better organization -->
                 <input type="hidden" name="_subject" value="New JnU IUPC 2025 Team Registration">
 
@@ -559,6 +562,57 @@ setInterval(updateCountdown, 1000);
 // Log the target date for debugging (you can remove this)
 console.log('Contest Date:', new Date('2025-09-19T09:00:00'));
 console.log('Current Date:', new Date());
+// Enhanced form handling with Google Sheets
+document.getElementById('registration-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const button = this.querySelector('button[type="submit"]');
+    const originalText = button.innerHTML;
+
+    // Show loading state
+    button.disabled = true;
+    button.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Submitting...';
+
+    // Prepare form data
+    const formData = new FormData(this);
+
+    // Submit to Google Apps Script
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                // Show success message
+                button.innerHTML = '✅ Registration Successful!';
+                button.className = 'w-full bg-green-600 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg';
+
+                // Optional: Reset form after 3 seconds
+                setTimeout(() => {
+                    this.reset();
+                    button.innerHTML = originalText;
+                    button.className = 'w-full gradient-bg text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200';
+                    button.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error(data.error || 'Submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            button.innerHTML = '❌ Error - Please Try Again';
+            button.className = 'w-full bg-red-600 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg';
+            button.disabled = false;
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.className = 'w-full gradient-bg text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200';
+            }, 3000);
+        });
+});
+
 </script>
 </body>
 </html>
