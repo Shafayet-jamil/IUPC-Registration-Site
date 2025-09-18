@@ -414,6 +414,10 @@
                         <label class="text-sm text-gray-700">
                             I agree to the <a href="#" class="text-green-600 hover:text-green-700 font-medium">terms and conditions</a> and confirm that all information provided is accurate.
                         </label>
+                        <input type="checkbox" required class="mt-1 w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                        <label class="text-sm text-gray-700">
+                            Did you read the <a href="https://drive.google.com/file/d/1e7cKmlmSF7_tBveB5Au--amys0Za7GGe/view" class="text-green-600 hover:text-green-700 font-medium">RuleBook</a>?.
+                        </label>
                     </div>
                     <button type="submit" class="w-full gradient-bg text-white py-3 sm:py-4 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
                         Register Team for JnU IUPC 2025
@@ -437,7 +441,7 @@
                         </svg>
                     </div>
                     <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Date & Time</h4>
-                    <p class="text-sm sm:text-base text-gray-600">September 19, 2025<br>2.30 PM - 6:30 PM</p>
+                    <p class="text-sm sm:text-base text-gray-600">October 9, 2025<br>11.00 AM - 3.00 PM</p>
                 </div>
                 <div class="bg-white rounded-xl p-4 sm:p-6 card-shadow">
                     <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -456,7 +460,7 @@
                         </svg>
                     </div>
                     <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">Registration</h4>
-                    <p class="text-sm sm:text-base text-gray-600">Free Entry<br>Deadline: Sept 14, 2025</p>
+                    <p class="text-sm sm:text-base text-gray-600">Free Entry<br>Deadline: Oct 4, 2025</p>
                 </div>
             </div>
         </div>
@@ -542,7 +546,7 @@ setTimeout(() => {
 });
 function updateCountdown() {
     // Target date: September 19, 2025 at 9:00 AM
-    const contestDate = new Date('2025-09-19T14:30:00').getTime();
+    const contestDate = new Date('2025-10-9T11:00:00').getTime();
     const now = new Date().getTime();
     const distance = contestDate - now;
 
@@ -568,7 +572,7 @@ setInterval(updateCountdown, 1000);
 
 // Log the target date for debugging (you can remove this)
     // console.log('Contest Date:', new Date('2025-09-19T09:00:00')); 
-console.log('Contest Date:', new Date('2025-09-19T14:30:00'));
+console.log('Contest Date:', new Date('2025-10-9T11:00:00'));
 console.log('Current Date:', new Date());
 // Enhanced form handling with Google Sheets
 document.getElementById('registration-form').addEventListener('submit', function(e) {
@@ -624,6 +628,7 @@ document.getElementById('registration-form').addEventListener('submit', function
 </script>
 </body>
 </html>
+
 
 
 
