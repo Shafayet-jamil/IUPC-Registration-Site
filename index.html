@@ -549,8 +549,8 @@ setTimeout(() => {
 }, 3000);
 });
 function updateCountdown() {
-    // Target date: September 19, 2025 at 9:00 AM
-    const contestDate = new Date('2025-10-9T11:00:00').getTime();
+    // Target date: Oct 9, 2025 at 11:00 AM
+    const contestDate = new Date('2025-10-9 11:00:00').getTime();
     const now = new Date().getTime();
     const distance = contestDate - now;
 
@@ -576,7 +576,7 @@ setInterval(updateCountdown, 1000);
 
 // Log the target date for debugging (you can remove this)
     // console.log('Contest Date:', new Date('2025-09-19T09:00:00')); 
-console.log('Contest Date:', new Date('2025-10-9T11:00:00'));
+console.log('Contest Date:', new Date('2025-10-9 11:00:00'));
 console.log('Current Date:', new Date());
 // Enhanced form handling with Google Sheets
 document.getElementById('registration-form').addEventListener('submit', function(e) {
@@ -632,6 +632,7 @@ document.getElementById('registration-form').addEventListener('submit', function
 </script>
 </body>
 </html>
+
 
 
 
